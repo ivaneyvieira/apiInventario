@@ -20,6 +20,8 @@ interface ColetaRepository: Repository<Coleta, Int> {
   fun findColetaAberta(inv: Inventario?, usuario: Usuario?, lote: Lote?): Coleta?
   
   fun mudaLote(coleta: Coleta?, lote: Lote?, inventario: Inventario?, usuario: Usuario?, coletor: Int): Coleta
+ 
+  fun findById(coletaId: Int): Coleta
 }
 
 

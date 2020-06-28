@@ -1,3 +1,7 @@
 package br.com.pintos.coletor.model.services
 
-interface InventarioService {}
+import br.com.pintos.jooq.tables.pojos.Inventario
+
+interface InventarioService {
+  fun findByNum(num : Int) : Inventario?
+}
