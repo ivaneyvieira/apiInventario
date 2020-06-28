@@ -31,4 +31,6 @@ class ColetaRepositoryImpl: ColetaRepository {
                         inventario: Inventario?,
                         usuario: Usuario?,
                         coletor: Int): Coleta = bo.mudaLote(coleta, lote, inventario, usuario, coletor)
+  
+  override fun findById(coletaId: Int): Coleta = bo.findById(coletaId.toLong())
 }

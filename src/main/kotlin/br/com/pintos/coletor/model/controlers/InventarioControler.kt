@@ -1,0 +1,19 @@
+package br.com.pintos.coletor.model.controlers
+
+import br.com.pintos.coletor.model.services.InventarioService
+import org.springframework.http.MediaType
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.RestController
+
+@RestController
+@RequestMapping("/api/inventario")
+class InventarioControler(val inventarioService: InventarioService): AbstractControler() {
+  @GetMapping("/findByNum/{num}")
+  fun findByNum(@PathVariable("num")
+                num: Int) = execService {
+    inventarioService.findByNum(num)
+  }
+}

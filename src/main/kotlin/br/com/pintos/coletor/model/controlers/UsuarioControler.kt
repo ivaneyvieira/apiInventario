@@ -11,19 +11,12 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/usuario")
-class UserSaciControler(val service: UsuarioService) {
+class UsuarioControler(val service: UsuarioService) {
   @GetMapping("/matricula/{codigo}")
   fun buscaPorCodigo(@PathVariable("codigo")
                      codigo: String): ResponseEntity<Response<Usuario>> {
-    val response = Response<Usuario>()
-    val ficha = service.buscaPorLogin(codigo)
-    return if(ficha == null) {
-      response.erros.add("Usuario não encontrado")
-      ResponseEntity.ok(response)
-    }
-    else {
-      response.data = ficha
-      ResponseEntity.ok(response)
-    }
+    val usuario = service.buscaPorLogin(codigo)
+    return if(usuario == null) ResponseEntity.ok(Response(listOf("Usuario não encontrado")))
+    else ResponseEntity.ok(Response(data = usuario))
   }
 }
